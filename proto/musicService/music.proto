@@ -1,0 +1,18 @@
+// go:generate protoc --go_out=../../pkg/grpc --go_opt=paths=source_relative music.proto
+
+syntax = "proto3";
+
+package music;
+option go_package = "github.com/chamegashi/musicApiWithGo/proto";
+
+service Music {
+    rpc GetMusic (GetMusicRequest) returns (GetMusicResponse){}
+}
+
+message GetMusicRequest {
+    string music = 1;
+}
+
+message GetMusicResponse {
+    string music = 1;
+}
