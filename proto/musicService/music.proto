@@ -5,14 +5,36 @@ syntax = "proto3";
 package music;
 option go_package = "github.com/chamegashi/musicApiWithGo/proto";
 
-service Music {
+service MusicService {
     rpc GetMusic (GetMusicRequest) returns (GetMusicResponse){}
+    rpc GetAllMusics (GetAllMusicsRequest) returns (GetAllMusicsResponse){}
+}
+
+message Music {
+    string id = 1;
+    string music_name = 2;
+    string hiragana = 3;
+    string artist = 4;
+    uint32 key = 5;
+    string max_key = 6;
+    string max_score = 7;
+    string user_id = 8;
+    string modified = 9;
+    string created = 10;
 }
 
 message GetMusicRequest {
-    string music = 1;
+    string id = 1;
 }
 
 message GetMusicResponse {
-    string music = 1;
+    Music music = 1;
+}
+
+message GetAllMusicsRequest {
+    string id = 1;
+}
+
+message GetAllMusicsResponse {
+    Music music = 1;
 }
